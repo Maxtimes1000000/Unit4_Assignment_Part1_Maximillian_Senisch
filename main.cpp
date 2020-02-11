@@ -7,7 +7,11 @@
 	and/or legitimate user error. 
 	//Try and Catch blocks are used in error checking
 	Teacher: Dr. Tyson McMillan, Ph.D.  
-  STUDENT (McMillanite):
+  STUDENT (McMillanite): Maximillian Senisch
+  2/10/2020
+  IDE: repl.it
+  COSC-1436-57002
+  Description: This program takes in a number and does different math with it 
 */
 #include <cstdlib>  // Provides EXIT_SUCCESS
 #include <iostream>  // Provides cout, cerr, endl
@@ -19,90 +23,39 @@ using namespace std;
 
 int main()
 {
-   //***********Validating int data type******************/
-	int input = 0;
-	input = validateInt(input); //validate my integer by function call, save that value into input
-    cout << "You entered valid int: " << input << endl;
-    
-	/****************Extend code to Validate double (follow int pattern)**********/
-	double inputDouble = 0.0;
-  	inputDouble = validateDouble(inputDouble); //validate my double by function call, save that value into inputDouble
-    cout << "You entered valid double: " << inputDouble << endl;
+  //initialize variables
+  double n = 0.0, nSquared = 0.0;
+  const double nOverN = 1;
+  int counter = 0;
 
-	/****************Extend code to Validate char (follow int pattern)**********/
-	char inputChar = '\0'; //{0}
-	inputChar = validateChar(inputChar); //validate my char by function call, save that value into inputChar
-    cout << "You entered valid char: " << inputChar << endl;
+  while(n != -1)
+  {
+    //ask for input
+    cout << "(to exit loop enter -1) \nPlease ";
+    n = validateDouble(n);
 
-	/****************Extend code to Validate string (follow int pattern, if possible)**********/
-	string inputString = (""); 
-	inputString = validateString(inputString); //validate my string by function call, save that value into inputString
-    cout << "You entered string: " << inputString << endl;
+    //process - calculations
+    nSquared = n*n;
 
-	/****************Extend code to Validate if truly an int and greater than 77 **********/
-	int input2 = 0;
-	
-	do
-	{
-		cout << "Enter an integer greater than 77." << endl;  
-		input2 = validateInt(input2); //validate my integer by function call, save that value into input
-		
-		if(input2 < 77)
-		{
-			cout << "\nInvalid input: (" << input2 <<") number must be greater than 77." << endl;
-		}
-	}
-	while(input2 < 77); //loop until input2 is greather than 77
-
-    cout << "You entered valid int: " << input2 << endl;
-
-	/****************Extend code to Validate if truly an double and greater than 0.00 **********/
-	double inputDouble2 = 0.0;
-	
-	do
-	{
-		cout << "Enter an number greater than 0."<< endl; 
-		inputDouble2 = validateDouble(inputDouble2); //validate my integer by function call, save that value into input
-		
-		if(inputDouble2 < 0)
-		{
-			cout << "\nInvalid input: (" << inputDouble2 <<") number must be greater than 0." << endl;
-		}
-	}
-	while(inputDouble2 < 0); //loop until inputDouble2 is greather than 0
-
-    cout << "You entered valid double: " << inputDouble2<< endl;
-    //A program to output grade values
-   //based upon numberical input of the user yourName: Teacher: Dr_T 8-28-2019
-   double grade = 0.0; 
-   do
-   { // begin do 
-      cout << "\nPlease enter a numerical grade (-1 to exit): ";
-      grade = validateDouble(grade); //accept grade and validate the data type
-      //if condition test
-      if(grade >= 90.0)
+    //output to the user
+    if(n != -1)
+    {
+      cout << "Your number (N) = " << n << endl;
+      cout << n << " * " << n << " = "<< nSquared << endl;
+      cout << n << " / " << n << " = ";
+      if(n != 0)
       {
-        cout << "\nThat's an A!" << endl; 
+        cout << nOverN << endl;
       }
-      else if(grade >= 80.0 && grade <= 89.9)
+      else
       {
-        cout << "\nThat's a B!" << endl; 
+        cout << "undefined because 0/0 has infinite solutions" << endl;
       }
-      else if(grade >= 70.0 && grade <= 79.9)
-      {
-        cout << "\nThat's a C!" << endl; 
-      }
-      else if(grade >= 60.0 && grade <= 69.9)
-      {
-        cout << "\nYikes. That's a D!" << endl; 
-      }
-      else if(grade < 60.0)
-      {
-        cout << "\nSee you next semester: F" << endl; 
-      }
-      else {cout << "\nInvalid input." << endl;}
-
-   }while(grade != -1); //end do 
-   
-    return 0;
+      cout << "((" << n << " + 3.0) / 5.0) = " << ((n+3)/5) << endl;
+      cout << "((" << n << " + 3.0) / 5.0) + ((" << n << " + 7.0) / 2.0) = " << (((n+3.0)/5.0) + ((n+7.0)/2.0)) << endl;
+      counter ++;
+    }
+    cout << "You have exited the program after " << counter << " successful iterations.";
+  }
+  return 0;
 }
